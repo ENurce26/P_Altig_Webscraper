@@ -9,8 +9,7 @@ import pandas as pd
 import re
 import csv
 
-user = ""
-password = ""
+from config import USER, PASSWORD, BASE_URL, OUTPUT_CSV
 
 phone_number_pattern = re.compile(r'(\(\d{3}\)\s\d{3}-\d{4})|(\d{10})')
 name_pattern = re.compile(r'(\w+),\s(\w+)')
