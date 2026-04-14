@@ -23,7 +23,7 @@ except WebDriverException:
     exit(1)
 
 def navigate_and_login(user, password, driver):
-    driver.get("https://m.planetaltig.com/")
+    driver.get(BASE_URL)
     time.sleep(3)
 
     # Login
@@ -178,7 +178,7 @@ def scrape_leads(driver):
     return people_data
 
 def save_to_csv(people_data):
-    with open('people_data.csv', 'w', newline='') as csvfile:
+    with open(OUTPUT_CSV, 'w', newline='') as csvfile:
         fieldnames = ['Name', 'Age', 'City', 'State', 'Phone']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
@@ -203,7 +203,7 @@ def save_to_csv(people_data):
 
 def main():
     try:
-        navigate_and_login(user, password, driver)
+        navigate_and_login(USER, PASSWORD, driver)
         leads_df = scrape_leads(driver)
         save_to_csv(leads_df)
     except Exception as e:
